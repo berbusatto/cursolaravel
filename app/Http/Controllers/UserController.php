@@ -15,25 +15,25 @@ class UserController extends Controller
 
     public function create()
     {
-        //
+        return view('user.create');
     }
-
 
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->only(['name', 'email']);
+        $data['password'] = bcrypt(rand(12345678, 987654321));
+        User::create($data);
 
+
+        return redirect()->route('user.index');
+    }
 
     public function show($id)
     {
-        // 2 FORMAS DE FAZER A BUSCA
-
         // RETORNA OBJETO
         $user = User::find($id);
 
         // RETORNA ARRAY
-        // PARA PRINTAR NA TABELA DEVE-SE FAZER UM @FOREACH
         //$user = User::where('id', $id)->get();
 
         return view('user.show', ['user'=> $user]);
@@ -51,7 +51,7 @@ class UserController extends Controller
         $data = $request->only(['name', 'email']);
         $user = User::find($id);
         $user->update($data);
-        return redirect()->back();
+        return redirect()->route('user.index');
     }
 
     public function destroy($id)

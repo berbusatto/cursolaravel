@@ -15,6 +15,7 @@
     <main class="container">
 
         <h1>INDEX</h1>
+        <a type="button" href="{{route('user.create')}}" class="btn btn-primary">NOVO</a>
 
         <table class="table">
             <thead>
