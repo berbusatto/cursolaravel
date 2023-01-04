@@ -22,21 +22,17 @@
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Botao</th>
                 </tr>
             </thead>
-
+            
             <tbody> 
-            @foreach($users as $user)
+            
                 <tr>
                     <th scope="row">{{$user->id}}</th>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>           
-                    <td>
-                        <a type="button" href="{{route('user.show', $user->id)}}" class="btn btn-success">VER</a>
-                    </td>         
+                    <td>{{$user->email}}</td>                    
                 </tr>    
-            @endforeach
+            
             </tbody>
         </table>
     </main>

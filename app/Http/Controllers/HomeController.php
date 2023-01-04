@@ -38,8 +38,17 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {        
+        // FORMAS DE FAZER A BUSCA
+
+        // RETORNA OBJETO
+        $user = User::find($id);
+
+        // RETORNA ARRAY
+        // PARA PRINTAR NA TABELA DEVE-SE FAZER UM @FOREACH
+        //$user = User::where('id', $id)->get();
+    
+        return view('user.show', ['user'=> $user]); 
     }
 
     /**
