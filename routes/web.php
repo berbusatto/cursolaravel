@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
-Route::get('/users/{id?}', [\App\Http\Controllers\UserController::class, 'show'])->name('user.show');
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{id?}', [UserController::class, 'show'])->name('user.show');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('/users/update/{id}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/users/delete{id}', [UserController::class, 'destroy'])->name('user.destroy');

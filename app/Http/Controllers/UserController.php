@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        // FORMAS DE FAZER A BUSCA
+        // 2 FORMAS DE FAZER A BUSCA
 
         // RETORNA OBJETO
         $user = User::find($id);
@@ -52,12 +52,12 @@ class UserController extends Controller
         $user = User::find($id);
         $user->update($data);
         return redirect()->back();
-
     }
-
 
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back();
     }
 }
