@@ -13,8 +13,8 @@
   </head>
   <body>
     <main class="container">
-        
-        <h1>INDEX</h1>
+
+        <h1>SHOW</h1>
 
         <table class="table">
             <thead>
@@ -24,15 +24,15 @@
                     <th scope="col">Email</th>
                 </tr>
             </thead>
-            
-            <tbody> 
-            
+
+            <tbody>
+
                 <tr>
                     <th scope="row">{{$user->id}}</th>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>                    
-                </tr>    
-            
+                    <td>{{$user->email}}</td>
+                </tr>
+
             </tbody>
         </table>
     </main>

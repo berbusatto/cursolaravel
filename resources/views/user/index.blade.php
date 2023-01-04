@@ -13,7 +13,7 @@
   </head>
   <body>
     <main class="container">
-        
+
         <h1>INDEX</h1>
 
         <table class="table">
@@ -22,20 +22,24 @@
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Botao</th>
+                    <th scope="col">Ver</th>
+                    <th scope="col">Editar</th>
                 </tr>
             </thead>
 
-            <tbody> 
+            <tbody>
             @foreach($users as $user)
                 <tr>
                     <th scope="row">{{$user->id}}</th>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>           
+                    <td>{{$user->email}}</td>
                     <td>
-                        <a type="button" href="{{route('user.show', $user->id)}}" class="btn btn-success">VER</a>
-                    </td>         
-                </tr>    
+                        <a type="button" href="{{route('user.show', $user->id)}}" class="btn btn-success">ABRIR</a>
+                    </td>
+                    <td>
+                        <a type="button" href="{{route('user.edit', $user->id)}}" class="btn btn-warning">EDITAR</a>
+                    </td>
+                </tr>
             @endforeach
             </tbody>
         </table>
