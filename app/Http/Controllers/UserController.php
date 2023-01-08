@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
+//ALGUNS MÉTODOS RETORNAM VIEWS E OUTROS MODELS
+
 class UserController extends Controller
 {
     // RETORNA A BLADE DO INDEX
@@ -40,10 +43,9 @@ class UserController extends Controller
 //        return view('user.show', ['user'=> $user]);
 //    }
 
-
-    // SEMELHANTE AO MÉTODO DE CIMA PORÉM COM BIND IMPLICIT E INJEÇÃO DE DEPENDENCIA
-    // INJETAR A CLASSE NOS PARAMETROS E A VARIÁVEL DEVE TER O MESMO NOME QUE ESTÁ NO PARAM DA ROTA
-    // DESTA FORMA O LARAVEL ENTENDE QUE ESTAMOS BUSCANDO UM USUÁRIO E AUTOMATIZA O PROCESSO
+    // SEMELHANTE AO MÉTODO ACIMA PORÉM COM BIND IMPLICIT E INJEÇÃO DE DEPENDÊNCIA
+    // INJETAR A CLASSE NOS PARAMETROS E A VARIÁVEL DEVE TER O MESMO NOME QUE O PARAM DA ROTA
+    // DESTA FORMA O LARAVEL ENTENDE QUE ESTAMOS BUSCANDO UM USUÁRIO E AUTOMATIZA O PROCESSO PELO ID
     public function show(User $user)
     {
         return view('user.show', [
