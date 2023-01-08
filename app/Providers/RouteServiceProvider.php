@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -26,6 +27,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // EXPLICIT BINDING DO MÉTODO SHOW (USERCONTROLLER)
+        Route::model('user', User::class);
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
