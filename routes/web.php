@@ -1,19 +1,8 @@
 <?php
 
+use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 // SINTAXE DAS ROTAS ANTES DO AGRUPAMENTO(PREFIX, NAME, CONTROLLER)
@@ -25,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 // DUPLICADA!!  REPETE ABAIXO DENTRO DO GROUP
 // Route::get('/users/{user:email}', [UserController::class, 'show'])->name('user.show');
 
-//Route::prefix('users')
+// Route::prefix('users')
 //    ->name('user.')
 //    ->controller(UserController::class)
 //    ->group(function (){
@@ -45,27 +34,26 @@ use Illuminate\Support\Facades\Route;
 //        Route::post('/add', 'store')->name('store');
 //        Route::put('/update/{id}', 'update')->name('update');
 //        Route::delete('/delete{id}', 'destroy')->name('destroy');
-//});
-
+// });
 
 
 // ROTAS RESOURCE - SUBSTITUI TODAS AS DECLARAÇÕES DE ROTA EM APENAS UMA,
 // CONCATENANDO O NOME DA ROTA COM A FUNÇÃO NO CONTROLLER
 
-Route::resource('/users', UserController::class)->names([
-    'index' => 'user.index',
-    'show' => 'user.show',
-    'edit' => 'user.edit',
-    'create' => 'user.create',
-    'destroy' => 'user.destroy',
-    'update' => 'user.update',
-    'store' => 'user.store'
-])->middleware(['MyFirstMiddleware:Admin']);
+//Route::resource('/users', UserController::class)->names([
+//    'index' => 'user.index',
+//    'show' => 'user.show',
+//    'edit' => 'user.edit',
+//    'create' => 'user.create',
+//    'destroy' => 'user.destroy',
+//    'update' => 'user.update',
+//    'store' => 'user.store'
+//])->middleware(['MyFirstMiddleware:Admin']);
 
 // CONTROLANDO AS ROTAS DISPONÍVEIS ->only E ->except()
 // PARA TESTAR, RODAR NO TERMINAL
 // php artisan route:list --except-vendor
-//Route::resource('/user', UserController::class)->only([
+// Route::resource('/user', UserController::class)->only([
 //    'index',
 //    'show'
 //]);
@@ -76,6 +64,11 @@ Route::resource('/users', UserController::class)->names([
 Route::fallback(function (){
     return redirect()->route('user.index');
 });
+
+// ROTA PARA CONTROLADOR INVOKABLE
+// NÃO PRECISA PASSAR A FUNÇÃO NO ARGUMENTO POIS
+// O INVOKABLE CHAMA QUANDO INSTANCIA O USER
+Route::get('/users/movies', MoviesController::class);
 
 
 

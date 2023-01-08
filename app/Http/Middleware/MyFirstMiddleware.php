@@ -27,15 +27,13 @@ class MyFirstMiddleware
         // }
 
         // NA RESPONSE
-        dd($role);
         $response = $next($request);
-
-
+        // QUALQUER VALIDAÇÃO
         if($this->users->count() === 8)
         {
             return $response;
         }
-        dd('Existem mais ou menos de 6 usuarios');
+        dd('Existem mais ou menos de 8 usuarios');
 
     }
 }
