@@ -25,10 +25,15 @@ use Illuminate\Support\Facades\Route;
 // DUPLICADA!!  REPETE ABAIXO DENTRO DO GROUP
 // Route::get('/users/{user:email}', [UserController::class, 'show'])->name('user.show');
 
+
+
 Route::prefix('users')
     ->name('user.')
     ->controller(UserController::class)
     ->group(function (){
+
+
+
         // INSERIR TODAS AS ROTAS DO GRUPO
         Route::get('/', 'index')->name('index');
 
