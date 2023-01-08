@@ -52,7 +52,7 @@ use Illuminate\Support\Facades\Route;
 // ROTAS RESOURCE - SUBSTITUI TODAS AS DECLARAÇÕES DE ROTA EM APENAS UMA,
 // CONCATENANDO O NOME DA ROTA COM A FUNÇÃO NO CONTROLLER
 
-Route::resource('/user', UserController::class)->names([
+Route::resource('/users', UserController::class)->names([
     'index' => 'user.index',
     'show' => 'user.show',
     'edit' => 'user.edit',
@@ -60,7 +60,7 @@ Route::resource('/user', UserController::class)->names([
     'destroy' => 'user.destroy',
     'update' => 'user.update',
     'store' => 'user.store'
-]);
+])->middleware(['MyFirstMiddleware:Admin']);
 
 // CONTROLANDO AS ROTAS DISPONÍVEIS ->only E ->except()
 // PARA TESTAR, RODAR NO TERMINAL
@@ -76,6 +76,7 @@ Route::resource('/user', UserController::class)->names([
 Route::fallback(function (){
     return redirect()->route('user.index');
 });
+
 
 
 

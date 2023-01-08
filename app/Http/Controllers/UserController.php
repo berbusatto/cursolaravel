@@ -71,30 +71,30 @@ class UserController extends Controller
     }
 
 
-    public function edit($id)
-    {
-        $user = User::find($id);
-        return view('user.edit', ['user'=> $user]);
-    }
-
-    // MÉTODO COM EXPLICIT BINDING INJETANDO USER
-    // ALTERAR O PARAMETRO NA ROTA DE ID PARA USER
-    //    public function edit($user)
+    //    public function edit($id)
     //    {
+    //        $user = User::find($id);
     //        return view('user.edit', ['user'=> $user]);
     //    }
 
-    public function update(Request $request, $id)
+    //     MÉTODO COM EXPLICIT BINDING INJETANDO USER
+    //     ALTERAR O PARAMETRO NA ROTA DE ID PARA USER
+        public function edit($user)
+        {
+            return view('user.edit', ['user'=> $user]);
+        }
+
+    public function update(Request $request, $user)
     {
         $data = $request->only(['name', 'email']);
-        $user = User::find($id);
+        //$user = User::find($id);
         $user->update($data);
         return redirect()->route('user.index');
     }
 
-    public function destroy($id)
+    public function destroy($user)
     {
-        $user = User::find($id);
+        //$user = User::find($id);
         $user->delete();
         return redirect()->back();
     }
