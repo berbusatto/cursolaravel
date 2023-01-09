@@ -78,7 +78,7 @@ class UserController extends Controller
     //    }
 
     //     MÉTODO COM EXPLICIT BINDING INJETANDO USER
-    //     ALTERAR O PARAMETRO NA ROTA DE ID PARA USER
+    //     ALTERAR O PARÂMETRO NA ROTA DE ID PARA USER
         public function edit($user)
         {
             return view('user.edit', ['user'=> $user]);
@@ -86,7 +86,7 @@ class UserController extends Controller
 
     public function update(Request $request, $user)
     {
-        $data = $request->only(['name', 'email']);
+        $data = $request->only(['name', 'email', 'password']);
         //$user = User::find($id);
         $user->update($data);
         return redirect()->route('user.index');

@@ -29,11 +29,10 @@ class MyFirstMiddleware
         // NA RESPONSE
         $response = $next($request);
         // QUALQUER VALIDAÇÃO
-        if($this->users->count() === 8)
+        if($this->users->count() >= 0)
         {
             return $response;
         }
-        dd('Existem mais ou menos de 8 usuarios');
-
+        return null;
     }
 }

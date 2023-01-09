@@ -21,9 +21,9 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Nome</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Ver</th>
+                    <th scope="col">Abrir</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
                 </tr>

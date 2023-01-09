@@ -40,15 +40,15 @@ use Illuminate\Support\Facades\Route;
 // ROTAS RESOURCE - SUBSTITUI TODAS AS DECLARAÇÕES DE ROTA EM APENAS UMA,
 // CONCATENANDO O NOME DA ROTA COM A FUNÇÃO NO CONTROLLER
 
-//Route::resource('/users', UserController::class)->names([
-//    'index' => 'user.index',
-//    'show' => 'user.show',
-//    'edit' => 'user.edit',
-//    'create' => 'user.create',
-//    'destroy' => 'user.destroy',
-//    'update' => 'user.update',
-//    'store' => 'user.store'
-//])->middleware(['MyFirstMiddleware:Admin']);
+Route::resource('/users', UserController::class)->names([
+    'index' => 'user.index',
+    'show' => 'user.show',
+    'edit' => 'user.edit',
+    'create' => 'user.create',
+    'destroy' => 'user.destroy',
+    'update' => 'user.update',
+    'store' => 'user.store'
+])->middleware(['MyFirstMiddleware:Admin']);
 
 // CONTROLANDO AS ROTAS DISPONÍVEIS ->only E ->except()
 // PARA TESTAR, RODAR NO TERMINAL
@@ -68,7 +68,7 @@ Route::fallback(function (){
 // ROTA PARA CONTROLADOR INVOKABLE
 // NÃO PRECISA PASSAR A FUNÇÃO NO ARGUMENTO POIS
 // O INVOKABLE CHAMA QUANDO INSTANCIA O USER
-Route::get('/users/movies', MoviesController::class);
+// Route::get('/users/movies', MoviesController::class);
 
 
 
