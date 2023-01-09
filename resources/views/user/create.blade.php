@@ -19,6 +19,9 @@
         <form method="post" action="{{route('user.store')}}">
             {{-- CRIA UM TOKEN DE AUTENTICAÇÃO PARA O PUT --}}
             @csrf
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
 
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
