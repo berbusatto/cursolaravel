@@ -44,7 +44,9 @@ class UserController extends Controller
 
     // MÉTODO STORE INJETANDO CLASSE DE VALIDAÇÃO
     public function store(UserStoreRequest $request){
-        $data = $request->only(['name', 'email','password']);
+
+        $data = $request->validated();
+        dd($data);
         User::create($data);
         return redirect()->route('user.index');
 
