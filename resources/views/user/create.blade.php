@@ -19,21 +19,41 @@
         <form method="post" action="{{route('user.store')}}">
             {{-- CRIA UM TOKEN DE AUTENTICAÇÃO PARA O PUT --}}
             @csrf
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+{{--            @foreach($errors->all() as $error)--}}
+{{--                <li>{{ $error }}</li>--}}
+{{--            @endforeach--}}
 
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
+
+                @error('name')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
+
+                @error('email')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+
+                @error('password')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">ATUALIZAR</button>
         </form>

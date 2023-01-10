@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\UserStoreRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\User;
+use PhpParser\Node\Stmt\Throw_;
 
 
 //ALGUNS MÉTODOS RETORNAM VIEWS E OUTROS MODELS
@@ -23,20 +26,28 @@ class UserController extends Controller
         return view('user.create');
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            // DUAS FORMAS DE VALIDAR
-            'name'=>'required|string',
-            'email'=>['required','unique:users','email'],
-            'password'=>'required|string|min:8|max:16'
-        ]);
+//    public function store(Request $request)
+//    {
+//        $request->validate([
+//            // DUAS FORMAS DE VALIDAR
+//            'name'=>'required|string',
+//            'email'=>['required','unique:users','email'],
+//            'password'=>'required|string|min:8|max:16'
+//        ]);
+//
+//        $data = $request->only(['name', 'email','password']);
+//
+//        User::create($data);
+//
+//        return redirect()->route('user.index');
+//    }
 
+    // MÉTODO STORE INJETANDO CLASSE DE VALIDAÇÃO
+    public function store(UserStoreRequest $request){
         $data = $request->only(['name', 'email','password']);
-
         User::create($data);
-
         return redirect()->route('user.index');
+
     }
 
     // MÉTODO BÁSICO PARA FAZER UM GET COM ID
@@ -72,6 +83,7 @@ class UserController extends Controller
 
     public function show($user)
     {
+        if(!$user) Throw new ModelNotFoundException();
         return view('user.show', [
             'user' => $user
         ]);
@@ -88,6 +100,7 @@ class UserController extends Controller
     //     ALTERAR O PARÂMETRO NA ROTA DE ID PARA USER
         public function edit($user)
         {
+            if(!$user) return Throw new ModelNotFoundException();
             return view('user.edit', ['user'=> $user]);
         }
 
@@ -95,6 +108,7 @@ class UserController extends Controller
     {
         $data = $request->only(['name', 'email', 'password']);
         //$user = User::find($id);
+        if(!$user) return Throw new ModelNotFoundException();
         $user->update($data);
         return redirect()->route('user.index');
     }
@@ -103,6 +117,7 @@ class UserController extends Controller
     {
         //$user = User::find($id);
         $user->delete();
+        if(!$user) return Throw new ModelNotFoundException();
         return redirect()->back();
     }
 }
