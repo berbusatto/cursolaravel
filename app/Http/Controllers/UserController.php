@@ -16,7 +16,11 @@ class UserController extends Controller
     // RETORNA A BLADE DO INDEX
     public function index()
     {
-        $users = User::get();
+        $users = User::all();
+
+        // OU PODE SER TAMBEM
+        // $users = User::where('id', '<', 10)->get();
+
         return view('user.index', ['users' => $users]);
     }
 
