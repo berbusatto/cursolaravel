@@ -33,7 +33,7 @@ class UserController extends Controller
 //    public function store(Request $request)
 //    {
 //        $request->validate([
-//            // DUAS FORMAS DE VALIDAR
+//            // DUAS FORMAS DE VALIDAR: | ou ,
 //            'name'=>'required|string',
 //            'email'=>['required','unique:users','email'],
 //            'password'=>'required|string|min:8|max:16'
@@ -50,7 +50,8 @@ class UserController extends Controller
     public function store(UserStoreRequest $request){
 
         $data = $request->validated();
-        dd($data);
+        //$data->password = bcrypt($data->password);
+        $data['password'] = bcrypt('password');
         User::create($data);
         return redirect()->route('user.index');
 
@@ -115,6 +116,7 @@ class UserController extends Controller
         $data = $request->only(['name', 'email', 'password']);
         //$user = User::find($id);
         if(!$user) return Throw new ModelNotFoundException();
+        $data['password'] = bcrypt('password');
         $user->update($data);
         return redirect()->route('user.index');
     }

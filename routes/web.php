@@ -50,6 +50,8 @@ Route::resource('/users', UserController::class)->names([
     'store' => 'user.store'
 ])->middleware(['MyFirstMiddleware:Admin']);
 
+
+
 // CONTROLANDO AS ROTAS DISPONÍVEIS ->only E ->except()
 // PARA TESTAR, RODAR NO TERMINAL
 // php artisan route:list --except-vendor
@@ -57,6 +59,8 @@ Route::resource('/users', UserController::class)->names([
 //    'index',
 //    'show'
 //]);
+
+
 
 // MÉTODO FALLBACK
 // DEFINE UMA PÁGINA PADRÃO PARA QUANDO A ROTA NÃO É ENCONTRADA
@@ -68,6 +72,7 @@ Route::fallback(function (){
 // ROTA PARA CONTROLADOR INVOKABLE
 // NÃO PRECISA PASSAR A FUNÇÃO NO ARGUMENTO POIS
 // O INVOKABLE CHAMA QUANDO INSTANCIA O USER
+
 // Route::get('/users/movies', MoviesController::class);
 
 
