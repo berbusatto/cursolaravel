@@ -51,7 +51,7 @@ class UserController extends Controller
 
         $data = $request->validated();
         //$data->password = bcrypt($data->password);
-        $data['password'] = bcrypt('password');
+        $data['password'] = bcrypt($data['password']);
         User::create($data);
         return redirect()->route('user.index');
 
@@ -116,7 +116,7 @@ class UserController extends Controller
         $data = $request->only(['name', 'email', 'password']);
         //$user = User::find($id);
         if(!$user) return Throw new ModelNotFoundException();
-        $data['password'] = bcrypt('password');
+        $data['password'] = bcrypt($data['password']);
         $user->update($data);
         return redirect()->route('user.index');
     }
