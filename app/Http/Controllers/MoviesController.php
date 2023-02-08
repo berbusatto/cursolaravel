@@ -9,6 +9,6 @@ class MoviesController extends Controller
 
     public function __invoke(Request $request)
     {
-        dd('invoke fireballllllllllll');
+        dd('INVOKE firebaaaaaaaaaaal');
     }
 }

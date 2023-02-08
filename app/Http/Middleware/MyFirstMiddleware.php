@@ -28,7 +28,9 @@ class MyFirstMiddleware
 
         // NA RESPONSE
         $response = $next($request);
-        // QUALQUER VALIDAÇÃO
+
+
+        // QUALQUER VALIDAÇÃO PODE OCORRER AQUI
         if($this->users->count() >= 0)
         {
             return $response;
