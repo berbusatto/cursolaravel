@@ -16,12 +16,22 @@ class UserController extends Controller
     // RETORNA A BLADE DO INDEX
     public function index()
     {
-        $users = User::all();
+        //$users = User::all();
 
-        // OU PODE SER TAMBEM
-        // $users = User::where('id', '<', 10)->get();
+        // USANDO MÉTODO GET TRAZ UM ARRAY
+        // $users = User::where('id', '>', 10)->get();
 
-        return view('user.index', ['users' => $users]);
+        // OU PARA MOSTRAR APENAS UM (VEM NO ARRAY)
+        // $users = User::where('id', 10)->get();
+
+        // MÉTODO FIRST TRAZ O PRIMEIRO COMO OBJETO
+        // $users = User::where('id', 25)->first();
+
+        // E O MAIS INDICADO: FIND
+        $users = User::find();
+        User::
+        dd($users);
+        //return view('user.index', ['users' => $users]);
     }
 
     // RETORNA A BLADE DO NOVO CONTATO
