@@ -16,7 +16,7 @@ class UserController extends Controller
     // RETORNA A BLADE DO INDEX
     public function index()
     {
-        //$users = User::all();
+        $users = User::all();
 
         // USANDO MÉTODO GET TRAZ UM ARRAY
         // $users = User::where('id', '>', 10)->get();
@@ -28,10 +28,10 @@ class UserController extends Controller
         // $users = User::where('id', 25)->first();
 
         // E O MAIS INDICADO: FIND
-        $users = User::find();
-        User::
-        dd($users);
-        //return view('user.index', ['users' => $users]);
+//        $users = User::find(25);
+
+
+        return view('user.index', ['users' => $users]);
     }
 
     // RETORNA A BLADE DO NOVO CONTATO
