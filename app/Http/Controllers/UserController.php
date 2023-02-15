@@ -17,21 +17,22 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        return $users;
 
         // USANDO MÉTODO GET TRAZ UM ARRAY
         // $users = User::where('id', '>', 10)->get();
 
         // OU PARA MOSTRAR APENAS UM (VEM NO ARRAY)
-        // $users = User::where('id', 10)->get();
+        //$users = User::where('id', 28)->get();
 
         // MÉTODO FIRST TRAZ O PRIMEIRO COMO OBJETO
         // $users = User::where('id', 25)->first();
 
-        // E O MAIS INDICADO: FIND
-//        $users = User::find(25);
+        // E O MAIS USADO: FIND
+        // $users = User::find(25);
 
 
-        return view('user.index', ['users' => $users]);
+        // return view('user.index', ['users' => $users]);
     }
 
     // RETORNA A BLADE DO NOVO CONTATO
@@ -60,7 +61,6 @@ class UserController extends Controller
     public function store(UserStoreRequest $request){
 
         $data = $request->validated();
-        //$data->password = bcrypt($data->password);
         $data['password'] = bcrypt($data['password']);
         User::create($data);
         return redirect()->route('user.index');

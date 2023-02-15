@@ -19,12 +19,25 @@ class User extends Authenticatable
         'password',
     ];
 
+    // ATRIBUTO NÃO APARECE NAS CONSULTAS
+    // NÃO USAR EM MONOLITOS
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    // ATRIBUTO APARECE NAS CONSULTAS
+    protected $visible = [
+      //
+    ];
+
+    // FAZ O CAST PARA PADRONIZAR OS FORMATOS DOS DADOS
+    // (ORIGINAL É DATETIME)
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'date:d/m/y',
+        'deleted_at' => 'date:d/m/y',
+        'created_at' => 'date:d/m/y',
+        'updated_at'  => 'date:d/m/y',
+        'is_blocked' => 'boolean'
     ];
 }
